@@ -1,0 +1,1 @@
+o exercício 21 utiliza biblioteca pygame, da qual nao instalei.
