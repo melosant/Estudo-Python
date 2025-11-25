@@ -1,3 +1,6 @@
+# programa 23 : separando um número em suas partes
+# Manipulando Strings (Aula 9)
+
 num = int(input('Informe o número (0-9999) : '))
 u = num // 1 % 10
 d = num // 10 % 10

@@ -1,3 +1,6 @@
+# programa 20 : embaralha a lista dos alunos
+# Utilizando módulos (Aula 8)
+
 import random
 
 alunos = []

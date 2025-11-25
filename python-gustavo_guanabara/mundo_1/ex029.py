@@ -1,3 +1,6 @@
+# programa 29 : verificação de multas
+# Condições if-else if-else (Aula 10)
+
 import math
 
 km = float(input('Informe quantos km foram rodados : '))

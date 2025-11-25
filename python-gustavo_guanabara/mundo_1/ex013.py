@@ -1,3 +1,6 @@
+# programa 13 : aplicando aumento de 15% num salario que o usuário informa
+# Operadores Aritméticos (Aula 7)
+
 salario = float(input('Digite o salario do funcionario : R$'))
 aumento = salario * 1.15
 # aumento = salario + (salario * 15/100)

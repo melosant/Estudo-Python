@@ -1,3 +1,6 @@
+# programa 15 : aluguel de carro - relação diasxkm
+# Operadores Aritméticos (Aula 7)
+
 dias = int(input('Quantos dias o carro foi alugado ? '))
 km = float(input('Informe quantos km rodados : '))
 

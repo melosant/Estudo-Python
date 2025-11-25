@@ -1,3 +1,6 @@
+# programa 29 : Prmieiro e ultimo nome
+# Manipulando Strings (Aula 9)
+
 nome = input('Digite seu nome completo: ').split()
 
 print(f'Muito prazer em te conhecer, {nome[0]}!')

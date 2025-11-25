@@ -1,3 +1,6 @@
+# programa 4 : funções relacionadas às strings
+# Tipos primitivos e saídas de dados (Aula 6)
+
 word = input('Digite algo : ')
 print(f'tipo primitivo : {type(word)}')
 print(f'composto por espaços : {word.isspace()}')

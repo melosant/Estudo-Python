@@ -1,3 +1,5 @@
+# programa 35 : verificação de existêncai de triângulos
+# Condições if-else if-else (Aula 10)
 # um lado nao pode ser maior q a soma dos outros 2
 
 r1 = int(input('informe o valor da 1° reta : '))

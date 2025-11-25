@@ -1,3 +1,6 @@
+# programa 18 : seno, cos e tang de um angulo
+# Utilizando módulos (Aula 8)
+
 from math import sin, tan, cos, radians
 
 ang = float(input('Digite o ângulo que vocÊ deseja : '))

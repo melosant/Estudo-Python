@@ -1,3 +1,6 @@
+# programa 28 : jogo da advinhação
+# Condições if-else if-else (Aula 10)
+
 from random import randint
 
 numero_secreto = randint(0, 5)

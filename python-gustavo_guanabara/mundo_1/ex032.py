@@ -1,3 +1,6 @@
+# programa 32 : ano bissexto
+# Condições if-else if-else (Aula 10)
+
 from datetime import date
 
 ano = int(input('Informe um ano para conferência. Coloque 0 para analisar o ano atual (yyyy): '))

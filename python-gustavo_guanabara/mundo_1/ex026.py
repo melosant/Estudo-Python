@@ -1,3 +1,6 @@
+# programa 26 : quantidades de 'A's em uma frase e suas posições
+ # Manipulando Strings (Aula 9)
+
 frase = input('Digite uma frase : ').upper().strip()
 
 print(f'''

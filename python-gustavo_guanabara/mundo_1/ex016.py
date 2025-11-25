@@ -1,3 +1,6 @@
+# programa 16 : quebrando um numero
+# Utilizando módulos (Aula 8)
+
 import math
 num = float(input('Digite um numero real : '))
 

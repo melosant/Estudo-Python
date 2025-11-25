@@ -1,3 +1,6 @@
+# programa 17 : calculo da hipotenusa
+# Utilizando módulos (Aula 8)
+
 import math
 catop = float(input('Digite o valor do cateto oposto : '))
 catad = float(input('Digite o valor do cateto adjacente : '))

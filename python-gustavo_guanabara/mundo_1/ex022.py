@@ -1,3 +1,6 @@
+# programa 22 : funções para manipulação de strings
+# Manipulando Strings (Aula 9)
+
 nome = str(input('Digite seu nome completo : ')).strip() # strip somente para retirar os espaços
 print(f'NOME EM MAIÚSCULO : {nome.upper()}')
 print(f'NOME EM MINÚSCULO : {nome.lower()}')
