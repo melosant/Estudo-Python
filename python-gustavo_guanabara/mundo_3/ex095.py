@@ -36,7 +36,7 @@ while True:
     opc = int(input('\nMostrar detalhamento de qual jogador (No. / 999 para parar) : '))
     if opc == 999:
         break
-    elif opc >= 0:
+    elif opc >= 0 and opc <= len(jogadores):
         print()
         for jog in jogadores:
             if opc == jogadores.index(jog):
@@ -45,6 +45,6 @@ while True:
                     print(f'    => Na Partida {i+1}, fez {jog["Gols"][i]}')
                 continue
     else:
-        print('Por favor, digite uma opção válida. ', end='')
+        print(f'Não existe jogador {opc}. Digite uma opção válida. ', end='')
 
 print('\nFim do programa!')
