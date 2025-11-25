@@ -1,9 +1,13 @@
 boletim = []
 temp = []
 
+print('=-' * 11)
+print('   BOLETIM ESCOLAR')
+print('=-' * 11)
+
 while True:
     media = 0
-    temp.append(str(input('Nome : ').capitalize()))
+    temp.append(str(input('\nNome : ').capitalize()))
     temp.append(float(input('Nota 1 : ')))
     media += temp[1]
     temp.append(float(input('Nota 2 : ')))
@@ -31,7 +35,17 @@ for aluno in boletim:
 print('=-' * 20)
 
 while True:
-    opc = int(input('Mostrar as notas de qual aluno (No. / 999 para parar) : '))
+    opc = int(input('\nMostrar as notas de qual aluno (No. / 999 para parar) : '))
     if opc == 999:
         break
-    elif opc == 
+    elif opc >= 0:
+        for aluno in boletim:
+            if opc == boletim.index(aluno):
+                print('-=' * 15)
+                print(f'{aluno[0]} | NOTA 1: {aluno[1]} / NOTA 2: {aluno[2]}')
+                print('-=' * 15)
+                continue
+    else:
+        print('Por favor, digite uma opção válida. ', end='')
+
+print('\nFim do programa!')
