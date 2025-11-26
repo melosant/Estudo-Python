@@ -26,6 +26,9 @@ def diminuir(price, d, form=False):
     else:
         return reduzir
     
+def moeda(p):
+    return f'R${p:.2f}'.replace('.', ',')
+
 def resumo(price, a, d):
     print(f'''
 ------------------------------
@@ -36,6 +39,3 @@ O dobro de {moeda(price)} é {dobro(price, True)}.
 Aumentando {a}% em {moeda(price)} fica {aumentar(price, a, True)}
 Diminuindo {d}% em {moeda(price)} fica {diminuir(price, d, True)}
 ------------------------------\n''')
-
-def moeda(p):
-    return f'R${p:.2f}'

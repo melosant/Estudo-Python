@@ -27,7 +27,7 @@ def diminuir(price, d, form=False):
         return reduzir
 
 def moeda(p):
-    return f'R${p:.2f}'
+    return f'R${p:.2f}'.replace('.', ',')
 
 def resumo(price, a, d):
     print(f'''
