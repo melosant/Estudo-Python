@@ -1,4 +1,4 @@
-# Programa 108 : Simplificando o resumo de informações
+# Programa 110 : Simplificando o resumo de informações
 # Modularização e Pacotes (Aula 22)
 
 from ex107_110pack import moeda
