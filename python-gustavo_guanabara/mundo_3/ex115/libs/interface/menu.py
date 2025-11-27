@@ -1,6 +1,11 @@
+# Pacote de módulos para interface.
+
 from time import sleep
 
 def mostrarMenu():
+    '''
+    Exibe menu interativo
+    '''
     print('-' * 40)
     print('             MENU PRINCIPAL')
     print('-' * 40)
@@ -23,9 +28,3 @@ def opc3():
     print('-' * 40)
     print('     Saindo do Sistema... Até Logo!')
     print('-' * 40)
-   
-
-# mostrarMenu()
-# opc1()
-# opc2()
-# opc3()
