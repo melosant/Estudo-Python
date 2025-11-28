@@ -1,52 +1,52 @@
-# proj calculadora bases de prog
+# proj calculadora bases de prog em py
 
-from libs.functions import *
-import datetime
+# modulos e pacotes
+from libs.func_input import *
+from libs.func_output import *
+from libs.interface import *
+
+# bibliotecas padroes
 from time import sleep
 
+# loop principa
 while True:
+    # input de dados da compra
     exibirmenu('       \033[;1mLOJA ONLINE  ')
     nomeprod = leianome('\033[1;94mNome do Produto : \033[m')
-    if nomeprod == None:
+    if nomeprod == None: # se interromper, break
         break
     code = leiacode('\033[1;94mCódigo do Produto : \033[m') 
-    if code == None:
+    if code == None: # se interromper, break
         break
     precoprod = leiafloat('\033[1;94mPreço do Produto :\033[m \033[1;32mR$')
-    if precoprod == None:
+    if precoprod == None: # se interromper, break
         break
     pesoprod = leiafloat('\033[1;94mPeso do Produto (em kg): \033[m')
-    if pesoprod == None:
+    if pesoprod == None: # se interromper, break
         break
 
     localentrega('  \033[;1mREGIÃO DA ENTREGA  ')
-    try:
-        opcao = leiaint('\033[1;95mSelecione Sua Região : \033[m')
-        if opcao == None:
-            break
-        elif opcao == 1:
-            total, frete = opcaoum(precoprod, pesoprod)
-            local = 'Região Sul'
-        elif opcao == 2:
-            total, frete = opcaodois(precoprod, pesoprod)
-            local = 'Região Sudeste'
-        elif opcao == 3:
-            total, frete = opcaotres(precoprod, pesoprod)
-            local = 'Região Norte'
-        else:
-            total, frete = opcaoquatro(precoprod, pesoprod)
-            local = 'Região Nordeste'
-    except KeyboardInterrupt:
+
+    opcao = leiaint('\033[1;95mSelecione Sua Região : \033[m')
+    if opcao == None: # se interromper, break
         break
+    elif opcao == 1:
+        total, frete = opcaoum(precoprod, pesoprod)
+        local = 'Região Sul'
+    elif opcao == 2:
+        total, frete = opcaodois(precoprod, pesoprod)
+        local = 'Região Sudeste'
+    elif opcao == 3:
+        total, frete = opcaotres(precoprod, pesoprod)
+        local = 'Região Norte'
+    else:
+        total, frete = opcaoquatro(precoprod, pesoprod)
+        local = 'Região Nordeste'
+ 
+    # pegando a data atual
+    dataformatada, dataentrega = data_compra()
 
-    data = datetime.date.today()
-    dataf = datetime.date.strftime(data, '%d/%m/%Y')
-    prazoentrega = 10
-    prazo_delta = datetime.timedelta(days=prazoentrega)
-    entrega = data + prazo_delta
-    entrega = datetime.date.strftime(entrega, '%d/%m/%Y')
-
-    resumo(nomeprod, code, precoprod, pesoprod, local, frete, total, dataf, entrega)
+    resumo(nomeprod, code, precoprod, pesoprod, local, frete, total, dataformatada, dataentrega)
     break
 
 sleep(1)
