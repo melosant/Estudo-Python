@@ -1,4 +1,4 @@
-# Programa 35 - Registro Notas de Alunos (Cisco)
+# Registro Notas de Alunos (Cisco)
 # utilizando dicionários e tuplas
 # atribui uma tupla como valor de uma chave no dicionário
 

@@ -1,4 +1,4 @@
-# proj calculadora bases de prog em py
+# proj calculadora bases de prog em py 
 
 # modulos e pacotes
 from libs.func_input import *
