@@ -3,9 +3,12 @@
 
 nome = input('Digite seu primeiro nome: ')
 
-if len(nome) <= 4:
-    print('Seu nome é curto.')
-elif len(nome) > 4 and len(nome) < 7:
-    print('Seu nome é normal.')
+if len(nome) > 0: 
+    if len(nome) <= 4:
+        print('Seu nome é curto.')
+    elif len(nome) > 4 and len(nome) < 7:
+        print('Seu nome é normal.')
+    else:
+        print('Seu nome é longo.')
 else:
-    print('Seu nome é longo.')
+    print('Digite ao menos uma letra.')
