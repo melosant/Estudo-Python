@@ -7,7 +7,7 @@ from time import sleep
 import os
 
 # fazendo a conexão para criação e alteração do arquivo txt
-caminho_base = 'C:/Users/ESTAGIÁRIO/Documents/ESTUDO/Estudo-Python/python-gustavo_guanabara/mundo_3/ex115'
+caminho_base = 'C:\\ESTUDO\\Estudo-Python\\python-gustavo_guanabara\\mundo_3\\ex115'
 nome_arquivo = 'cadastro.txt'
 caminho_completo = os.path.join(caminho_base, nome_arquivo)
 
