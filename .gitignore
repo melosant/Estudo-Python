@@ -5,3 +5,4 @@
 estudo_seiop/
 *__pycache__
 py-ess/
+.venv
