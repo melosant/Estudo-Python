@@ -105,6 +105,7 @@ if file_upload:
     with tab_stats:
         st.dataframe(df_stats, column_config=columns_config)
     
+    # exibição gráfico valor absoluto
     with tab_abs:
         abs_cols = ['Diferença Mensal Abs.', 
                 'Média 6M DIferença Mensal Abs.', 
@@ -112,6 +113,7 @@ if file_upload:
                 'Média 24M DIferença Mensal Abs.']
         st.line_chart(df_stats[abs_cols])
 
+    #  exibição gráfico valor relativo
     with tab_rel:
         rel_cols = ['Diferença Mensal Relativa',
                 'Evolução 6M Relativa',
