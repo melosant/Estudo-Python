@@ -51,9 +51,8 @@ if file_upload:
     df["Data"] = pd.to_datetime(df["Data"], format='%d/%m/%Y').dt.date
 
     exp1 = st.expander('Dados Brutos')
-
     # exibição dos dados
-    columns_fmt = {"Valor": st.column_config.NumberColumn("Valor", format="R$ %f")}
+    columns_fmt = {"Valor": st.column_config.NumberColumn("Valor", format="R$ %.2f")}
     exp1.dataframe(df, hide_index=True, column_config=columns_fmt)
     
     # criação de um expander + abas dentro delas
@@ -64,10 +63,10 @@ if file_upload:
     df_instituicao = df.pivot_table(index='Data', columns='Instituição', values='Valor')
     with tab_data:
         st.dataframe(df_instituicao, hide_index=False,column_config={
-            "Death Star": st.column_config.NumberColumn("Death Star", format='R$ %f'),
-            "Iron Bank": st.column_config.NumberColumn("Iron Bank", format='R$ %f'),
-            "Republic Bank": st.column_config.NumberColumn("Republic Bank", format='R$ %f'),
-            "TMW Bank": st.column_config.NumberColumn("TMW Bank", format='R$ %f')
+            "Death Star": st.column_config.NumberColumn("Death Star", format='R$ %.2f'),
+            "Iron Bank": st.column_config.NumberColumn("Iron Bank", format='R$ %.2f'),
+            "Republic Bank": st.column_config.NumberColumn("Republic Bank", format='R$ %.2f'),
+            "TMW Bank": st.column_config.NumberColumn("TMW Bank", format='R$ %.2f')
         })
     
     # grafico temporal
@@ -120,3 +119,37 @@ if file_upload:
                 'Evolução 12M Relativa',
                 'Evolução 24M Relativa']
         st.line_chart(data=df_stats[rel_cols])
+
+    # exibição metas
+    with st.expander('Metas'):
+        col1, col2 = st.columns(2)
+
+        data_inicio_meta = col1.date_input('Início da Meta : ', max_value=df_stats.index.max())
+        # pega todos os indices q antecedem ou sao iguais a data selecionada como inicial (intervalo entre uma e outra)
+        data_filtrada = df_stats.index[df_stats.index <= data_inicio_meta][-1]
+
+        salario_bruto = col2.number_input('Salário Bruto', min_value=0., format='%.2f')
+        salario_liq = col2.number_input('Salário Líquido', min_value=0., format='%.2f')
+        custos_fix = col1.number_input('Custos Fixos', min_value=0., format='%.2f')
+        
+        valor_inicio = df_stats.loc[data_filtrada]['Valor']
+        with st.container(border=True):
+            st.markdown(f'<p style="text-align: center;"><b>Valor no início da meta: R$ {valor_inicio:.2f}', unsafe_allow_html=True)
+
+
+        pot_col1, pot_col2 = st.columns(2)
+        mensal = salario_liq - custos_fix
+        with pot_col1.container(border=True):
+            st.markdown(f'**Potencial Arrecadação Mês**:\n\n R$ {mensal:.2f}')
+        
+        mensal = salario_liq - custos_fix
+        anual = mensal * 12
+        with pot_col2.container(border=True):
+            st.markdown(f'**Potencial Arrecadação Anual**:\n\n R$ {anual:.2f}')
+
+        meta_col1, meta_col2 = st.columns(2)
+        with meta_col1.container(border=True):
+            meta_estipulada = st.number_input(f'**Meta Estipulada**', min_value=0., format='%.2f', value=anual)
+            patrimonio_final = meta_estipulada + valor_inicio 
+        with meta_col2.container(border=True):
+            st.markdown(f'**Patrimônio Estimado Pós-Meta**:\n\n {patrimonio_final:.2f}')
