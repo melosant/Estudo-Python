@@ -1,7 +1,26 @@
 import streamlit as st
 import pandas as pd 
+import requests
+import datetime
+
+# põe a função em cache por 1 dia - maior rapidez
+@st.cache_data(ttl='1day')
+def get_selic():
+    '''
+    conexão com a api da taxa selic
+    '''
+    url = 'https://www.bcb.gov.br/api/servico/sitebcb/historicotaxasjuros'
+    resp = requests.get(url)
+    df = pd.DataFrame(resp.json()['conteudo'])
+
+    df["DataInicioVigencia"] = pd.to_datetime(df['DataInicioVigencia']).dt.date
+    df["DataFimVigencia"] = pd.to_datetime(df['DataFimVigencia']).dt.date
+    df["DataFimVigencia"] = df['DataFimVigencia'].fillna(datetime.datetime.today().date())
+    return df
+
 
 def calc_general_stats(df):
+
     '''
     Função que calcula todas as colunas e retorna já calculado.
 
@@ -134,22 +153,34 @@ if file_upload:
         
         valor_inicio = df_stats.loc[data_filtrada]['Valor']
         with st.container(border=True):
-            st.markdown(f'<p style="text-align: center;"><b>Valor no início da meta: R$ {valor_inicio:.2f}', unsafe_allow_html=True)
+            st.markdown(f'**Patrimônio no início da meta:** R$ {valor_inicio:.2f}')
+        
+        selic_gov = get_selic()
+        filter_selic_date = (selic_gov['DataInicioVigencia'] < data_inicio_meta) & (selic_gov['DataFimVigencia'] > data_inicio_meta)
+        selic_default = selic_gov[filter_selic_date]['MetaSelic'].iloc[0] 
 
+        selic = st.number_input('Selic', min_value=0., value=selic_default, format='%.2f')
+        selic_ano = selic / 100
+        selic_mes = (selic_ano + 1) ** (1/12) - 1
+
+        rendimento_ano = valor_inicio * selic_ano
+        rendimento_mes = valor_inicio * selic_mes
+        mensal = salario_liq - custos_fix + rendimento_mes
+        anual = 12 * (salario_liq - custos_fix) + rendimento_ano
 
         pot_col1, pot_col2 = st.columns(2)
-        mensal = salario_liq - custos_fix
         with pot_col1.container(border=True):
-            st.markdown(f'**Potencial Arrecadação Mês**:\n\n R$ {mensal:.2f}')
+            st.markdown(f'**Potencial Arrecadação Mês**:\n\n R$ {mensal:.2f}',
+                        help=f'{salario_liq:.2f} + (-{custos_fix:.2f}) + {rendimento_mes:.2f}')
         
-        mensal = salario_liq - custos_fix
-        anual = mensal * 12
         with pot_col2.container(border=True):
-            st.markdown(f'**Potencial Arrecadação Anual**:\n\n R$ {anual:.2f}')
+            st.markdown(f'**Potencial Arrecadação Anual**:\n\n R$ {anual:.2f}',
+                        help=f'12 * {salario_liq} + (-{custos_fix}) + {rendimento_ano}')
 
         meta_col1, meta_col2 = st.columns(2)
         with meta_col1.container(border=True):
-            meta_estipulada = st.number_input(f'**Meta Estipulada**', min_value=0., format='%.2f', value=anual)
+            meta_estipulada = st.number_input(f'**Meta Estipulada**', format='%.2f', value=anual)
             patrimonio_final = meta_estipulada + valor_inicio 
         with meta_col2.container(border=True):
-            st.markdown(f'**Patrimônio Estimado Pós-Meta**:\n\n {patrimonio_final:.2f}')
+            st.markdown(f'**Patrimônio Estimado Pós-Meta**:\n\n {patrimonio_final:.2f}',
+                        help=f'{meta_estipulada} + {valor_inicio}')
