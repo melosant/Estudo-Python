@@ -6,3 +6,5 @@ estudo_seiop/
 *__pycache__
 py-ess/
 .venv
+
+pandas-2025/data/
