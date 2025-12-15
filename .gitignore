@@ -7,4 +7,7 @@ estudo_seiop/
 py-ess/
 .venv
 
-pandas-2025/data/
+*.csv
+*.db
+*.parquet
+*.xlsx

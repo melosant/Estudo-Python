@@ -5,3 +5,4 @@
 
 ## Ementa:
 1. Principais objetos do Pandas (dia01/)
+2. Importação de arquivos (dia02/)
