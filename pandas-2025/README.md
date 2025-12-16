@@ -8,3 +8,4 @@
 2. Importação de arquivos (dia02/01-03)
 3. Navegando pelos Dados (dia02/04-05)
 4. Filtrando dados (dia03)
+5. Transformação e remoção
