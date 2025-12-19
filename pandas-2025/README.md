@@ -9,3 +9,4 @@
 3. Navegando pelos Dados (dia02/04-05)
 4. Filtrando dados (dia03)
 5. Transformação e remoção (dia04-05-06)
+6. Groupby (dia07)
