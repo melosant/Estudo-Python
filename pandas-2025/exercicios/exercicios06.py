@@ -49,3 +49,10 @@ print('\nID COM MAIS PONTOS DEBITADOS: ', total.sort_values(by='PontosDebitados'
 #                              .count()
 #                              .sort_values(ascending=False)
 #                              .head(1))  
+
+# 06.05 - Qual a média de transações / dia?
+
+transacoes['DtCriacao'] = pd.to_datetime(transacoes['DtCriacao']).dt.date
+transacoes = transacoes.groupby(by='DtCriacao', as_index=False).count()[['DtCriacao', 'IdTransacao']]
+media = (transacoes['IdTransacao'].sum() / len(transacoes['DtCriacao']))
+print(f'MÉDIA DE TRANSAÇÕES POR DIA : {media:.2f}')
