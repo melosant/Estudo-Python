@@ -10,3 +10,5 @@
 4. Filtrando dados (dia03)
 5. Transformação e remoção (dia04-05-06)
 6. Groupby (dia07)
+7. Cruzamento de Dados Merge/Concat (dia08)
+8. Conectando com Bancos SQL (dia09)
