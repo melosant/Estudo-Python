@@ -28,5 +28,9 @@ df_explode['dtParcela'] = df_explode.apply(calcParcela, axis=1)
 # faz um groupby do id e da data, somando todas as parcelas baseadas nas datas
 df_explode = (df_explode.groupby(['idCliente', 'dtParcela'])
                         ['vlParcela'].sum()
-                        .reset_index())
+                        .reset_index()
+                        .pivot_table(index='idCliente',
+                                     columns='dtParcela',
+                                     values='vlParcela',
+                                     fill_value=0))
 print(df_explode)
