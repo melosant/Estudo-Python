@@ -12,3 +12,4 @@
 6. Groupby (dia07)
 7. Cruzamento de Dados Merge/Concat (dia08)
 8. Conectando com Bancos SQL (dia09)
+9. Stack, Unstack, PivotTable e Explode (dia10)
